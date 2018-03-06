@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:background="@drawable/background_grey_gradient"
+    tools:context="com.example.chiilek.milkwatch.InformationDisplay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_marginTop="150dp"
+            android:layout_marginStart="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bottle_half_large"
+            android:contentDescription="@string/milk_display" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bacteria_level"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="25dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ph_level"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="300dp"
+                android:layout_marginStart="25dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top"
+        android:background="@color/colorSpaceGreyDark">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start"
+            tools:ignore="UseCompoundDrawables">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="30dp"
+
+                android:text="@string/settings"
+                android:textColor="@color/colorSpaceGreyLight"
+                android:textSize="35sp"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="5dp"
+
+                android:src="@drawable/setting_grey"
+                android:contentDescription="@string/setting_icon" />
+
+            <TextView
+                android:id="@+id/notification_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="120dp"
+                android:textColor="@color/colorSpaceGreyLight"/>
+
+            <Switch
+                android:id="@+id/notification_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:thumbTint="@color/colorAccent"
+                android:trackTint="@color/colorAccent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:text="@string/bacteria_threshold"
+                android:textSize="20sp"
+                android:textColor="@color/colorAccent"/>
+
+            <SeekBar
+                android:id="@+id/bacteria_seek_bar"
+                android:layout_width="200dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginStart="1dp"
+                android:progressDrawable="@drawable/scrubber_progress"/>
+
+            <TextView
+                android:id="@+id/bacteria_threshold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorAccent"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="77dp"
+                android:text="@string/ph_threshold"
+                android:textSize="20sp"
+                android:textColor="@color/colorAccent"/>
+
+            <SeekBar
+                android:id="@+id/pH_seek_bar"
+                android:layout_width="200dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginStart="1dp"
+                android:progressDrawable="@drawable/scrubber_progress"/>
+
+            <TextView
+                android:id="@+id/pH_threshold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorAccent"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

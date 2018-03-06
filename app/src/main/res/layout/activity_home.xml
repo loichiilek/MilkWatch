@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:background="@drawable/background_without_cow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chiilek.milkwatch.HomeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_vertical"
+        android:layout_marginTop="250dp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="254dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cow_milk_me"
+        android:padding="0dp"
+        android:onClick="fetch_data"
+        />
+
+</LinearLayout>

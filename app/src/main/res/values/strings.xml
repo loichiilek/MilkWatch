@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MilkWatch</string>
+    <string name="milk_display">milk_display</string>
+    <string name="bacteria_level">Bacteria Level:</string>
+    <string name="ph_level">pH Level:</string>
+    <string name="settings">Settings</string>
+    <string name="setting_icon">Setting_Icon</string>
+    <string name="bacteria_threshold">Bacteria Threshold:</string>
+    <string name="ph_threshold">pH Threshold:</string>
+    <string name="notification">Notification</string>
+</resources>
