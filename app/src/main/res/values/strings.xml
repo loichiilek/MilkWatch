@@ -8,4 +8,6 @@
     <string name="bacteria_threshold">Bacteria Threshold:</string>
     <string name="ph_threshold">pH Threshold:</string>
     <string name="notification">Notification</string>
+    <string name="unsafe">UNSAFE</string>
+    <string name="safe">SAFE</string>
 </resources>

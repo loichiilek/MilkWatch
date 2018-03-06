@@ -5,6 +5,8 @@
     <color name="colorSpaceGreyDark">#363233</color>
     <color name="colorSpaceGreyLight">#5C5859</color>
     <color name="colorSpaceGreyLightest">#908687</color>
+    <color name="colorGreenSafe">#447244</color>
+    <color name="colorRedUnsafe">#804040</color>
     <color name="colorBlack">#000000</color>
     <color name="colorAccent">#CCCCCC</color>
 </resources>
