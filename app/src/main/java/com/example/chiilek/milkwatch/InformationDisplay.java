@@ -9,8 +9,6 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import static java.lang.String.format;
 
 public class InformationDisplay extends AppCompatActivity {
@@ -40,7 +38,7 @@ public class InformationDisplay extends AppCompatActivity {
 
         // To set seekBar values to the saved values.
         SeekBar bacSeekBar = findViewById(R.id.bacteria_seek_bar);
-        bacSeekBar.setProgress(sharedPref.getInt("bacteriaThreshold",50));
+        bacSeekBar.setProgress(sharedPref.getInt("bacteriaThreshold", 50));
         SeekBar pHSeekBar = findViewById(R.id.pH_seek_bar);
         float pHVal = sharedPref.getFloat("pHThreshold", 7) / (PH_MAX_THRESHOLD - PH_MIN_THRESHOLD) * 100;
         pHSeekBar.setProgress((int) pHVal);
