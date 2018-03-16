@@ -1,5 +1,6 @@
 package com.example.chiilek.milkwatch;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,8 +16,9 @@ import java.util.Calendar;
 import static android.app.Notification.VISIBILITY_PUBLIC;
 import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
 import static android.app.PendingIntent.getActivity;
+import static android.content.Context.*;
 
-public abstract class Notification extends Context {
+public class Notification extends Activity{
     private static final String CHANNEL_NAME = "default";
     private static final String CHANNEL_ID = "com.example.chiilek.milkwatch.notif";
     private NotificationManager manager;
@@ -48,7 +50,7 @@ public abstract class Notification extends Context {
     }
 
 
-    private void createNotification(){
+    public void createNotification(){
         createChannels();
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.cow_black)
@@ -75,32 +77,8 @@ public abstract class Notification extends Context {
 //      calendar.add(Calendar.HOUR_OF_DAY,  24);
         Intent intent1 = new Intent(this, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0,intent1, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager am = (AlarmManager) this.getSystemService(InformationDisplay.ALARM_SERVICE);
+        AlarmManager am = (AlarmManager) this.getBaseContext().getSystemService(ALARM_SERVICE);
         am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-    }
-
-    @Override
-    public Context getApplicationContext() {
-        return null;
-    }
-
-    public class AlarmReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            createNotification();
-
-//            long when = System.currentTimeMillis();
-//            NotificationManager notificationManager = (NotificationManager) context
-//                    .getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//            Intent notificationIntent = new Intent(context, HomeActivity.class);
-//            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//
-//            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-//                    notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        }
-
     }
 
 }
