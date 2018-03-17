@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v7.app.AppCompatActivity;
+
 import java.util.Calendar;
 import static android.app.Notification.VISIBILITY_PUBLIC;
 import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
@@ -36,49 +38,63 @@ public class Notification extends Activity{
         }
     }
 
-    private void setIntent(){
-        // Create an Intent for the activity you want to start
-        Intent resultIntent = new Intent(this, InformationDisplay.class);
-        // Create the TaskStackBuilder and add the intent, which inflates the back stack
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addNextIntentWithParentStack(resultIntent);
-        // Get the PendingIntent containing the entire back stack
+//    private void setIntent(){
+//        // Create an Intent for the activity you want to start
+//        Intent resultIntent = new Intent(this, InformationDisplay.class);
+//        // Create the TaskStackBuilder and add the intent, which inflates the back stack
+//        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+//        stackBuilder.addNextIntentWithParentStack(resultIntent);
+//        // Get the PendingIntent containing the entire back stack
+//        PendingIntent resultPendingIntent =
+//                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+//        builder.setContentIntent(resultPendingIntent);
+//    }
+
+
+    public void createNotification(Context context){
+        createChannels();
+        Intent notificationIntent = new Intent(context, InformationDisplay.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        android.support.v4.app.TaskStackBuilder stackBuilder = android.support.v4.app.TaskStackBuilder.create(context);
+        stackBuilder.addParentStack(InformationDisplay.class);
+        stackBuilder.addNextIntent(notificationIntent);
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
-        builder.setContentIntent(resultPendingIntent);
-    }
 
-
-    public void createNotification(){
-        createChannels();
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.cow_black)
                 .setContentTitle("MILKWATCH")
                 .setContentText("Bacteria levels are safe.")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        setIntent();
     }
 
-    private void createThresholdNotification(){
+    private void createThresholdNotification(Context context){
         createChannels();
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+        Intent notificationIntent = new Intent(context, InformationDisplay.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        android.support.v4.app.TaskStackBuilder stackBuilder = android.support.v4.app.TaskStackBuilder.create(context);
+        stackBuilder.addParentStack(InformationDisplay.class);
+        stackBuilder.addNextIntent(notificationIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.cow_black)
                 .setContentTitle("MILKWATCH")
                 .setContentText("Bacteria threshold has been reached.")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        setIntent();
+
+        mBuilder.setContentIntent(resultPendingIntent);
+        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(1, mBuilder.build());
     }
 
     private void setNotif(){
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.add(Calendar.SECOND, 1);
-//      calendar.add(Calendar.HOUR_OF_DAY,  24);
         Intent intent1 = new Intent(this, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0,intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am = (AlarmManager) this.getBaseContext().getSystemService(ALARM_SERVICE);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-    }
-
+        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 5000, pendingIntent);
+     }
 }
