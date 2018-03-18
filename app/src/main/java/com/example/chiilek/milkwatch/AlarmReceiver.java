@@ -1,7 +1,5 @@
 package com.example.chiilek.milkwatch;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -14,17 +12,13 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-//        long when = System.currentTimeMillis();
-//        NotificationManager notificationManager = (NotificationManager) context
-//                .getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//        Intent notificationIntent = new Intent(context, HomeActivity.class);
-//        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//
-//        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-//                notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
         Notification notif = new Notification();
-        notif.createNotification(context);
+        if (intent.getAction() != null && context != null) {
+            if (intent.getAction().equalsIgnoreCase(Intent.ACTION_BOOT_COMPLETED)) {
+                notif.setNotif(context, AlarmReceiver.class);
+                return;
+            }
+        }
+        notif.createNotification(context, InformationDisplay.class);
     }
 }

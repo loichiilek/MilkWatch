@@ -23,10 +23,9 @@
             android:name=".InformationDisplay"
             android:resizeableActivity="true"
             />
-        <!-- Register the Alarm Receiver -->
+
         <receiver
             android:name=".AlarmReceiver"
-            android:process=":remote"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

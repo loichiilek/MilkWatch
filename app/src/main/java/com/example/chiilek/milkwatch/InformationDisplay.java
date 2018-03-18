@@ -50,6 +50,7 @@ public class InformationDisplay extends AppCompatActivity {
         if (sharedPref.getBoolean("notification", true)) {
             notifText.setTextColor(getColor(R.color.colorAccent));
             notifSwitch.setChecked(true);
+            Notification.setNotif(InformationDisplay.this, AlarmReceiver.class);
         } else {
             notifText.setTextColor(getColor(R.color.colorSpaceGreyLight));
             notifSwitch.setChecked(false);
