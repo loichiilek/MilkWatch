@@ -20,16 +20,22 @@ import static android.app.PendingIntent.*;
 import static android.content.Context.ALARM_SERVICE;
 
 public class Notification{
-    private static final String CHANNEL_NAME = "default";
-    private static final String CHANNEL_ID = "com.example.chiilek.milkwatch.notif";
-    private NotificationManager manager;
+    NotificationManager manager;
+    String CHANNEL_ID = "com.example.chiilek.milkwatch.notif";
+
+    public Notification(Context context){
+    }
 
     private void createChannels(Context context){
+        String CHANNEL_NAME = "default";
+        String description = "Notif channel";
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create the NotificationChannel, but only on API 26+ because
             // the NotificationChannel class is new and not in the support library
             int importance = NotificationManagerCompat.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "name", IMPORTANCE_DEFAULT);
+            channel.setDescription(description);
             // Register the channel with the system
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
             manager.createNotificationChannel(channel);
