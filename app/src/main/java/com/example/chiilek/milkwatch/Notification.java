@@ -5,22 +5,18 @@ import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.Calendar;
+
 import static android.app.Notification.VISIBILITY_PUBLIC;
 import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
-import static android.app.PendingIntent.getActivity;
-import static android.content.Context.*;
 
-public class Notification extends Activity{
+public class Notification extends Activity {
     private static final String CHANNEL_NAME = "default";
     private static final String CHANNEL_ID = "com.example.chiilek.milkwatch.notif";
     private NotificationManager manager;
