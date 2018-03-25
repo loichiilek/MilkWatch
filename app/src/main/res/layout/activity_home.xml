@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|center_vertical"
+        android:fontFamily="casual"
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
@@ -21,9 +22,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/cow_button"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="130dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/cow_button"
