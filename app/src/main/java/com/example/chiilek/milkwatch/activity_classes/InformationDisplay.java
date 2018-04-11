@@ -1,4 +1,4 @@
-package com.example.chiilek.milkwatch;
+package com.example.chiilek.milkwatch.activity_classes;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
@@ -8,6 +8,10 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.example.chiilek.milkwatch.R;
+import com.example.chiilek.milkwatch.not_used.AlarmReceiver;
+import com.example.chiilek.milkwatch.not_used.Notification;
 
 import static java.lang.String.format;
 
@@ -50,7 +54,7 @@ public class InformationDisplay extends AppCompatActivity {
         if (sharedPref.getBoolean("notification", true)) {
             notifText.setTextColor(getColor(R.color.colorAccent));
             notifSwitch.setChecked(true);
-            Notification.setNotif(InformationDisplay.this, AlarmReceiver.class);
+//            Notification.setNotif(InformationDisplay.this, AlarmReceiver.class);
         } else {
             notifText.setTextColor(getColor(R.color.colorSpaceGreyLight));
             notifSwitch.setChecked(false);

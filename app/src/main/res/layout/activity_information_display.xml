@@ -7,7 +7,7 @@
     android:gravity="center|center_vertical"
     android:orientation="vertical"
     android:background="@drawable/background_grey_gradient"
-    tools:context="com.example.chiilek.milkwatch.InformationDisplay">
+    tools:context="com.example.chiilek.milkwatch.activity_classes.InformationDisplay">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -255,6 +255,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.9" />
+
 
     </android.support.constraint.ConstraintLayout>
 

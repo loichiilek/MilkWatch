@@ -58,7 +58,7 @@ public class CircularProgressBarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_display2);
 
-        sharedPref = getPreferences(0);
+        sharedPref = this.getSharedPreferences("values", MODE_PRIVATE);;
         editor = sharedPref.edit();
 
         subText = findViewById(R.id.subText);
@@ -71,8 +71,6 @@ public class CircularProgressBarActivity extends AppCompatActivity {
         client = new MqttAndroidClient(this.getApplicationContext(), URL, clientId);
 
         options = new MqttConnectOptions();
-
-
         options.setUserName(USERNAME);
         options.setPassword(PASSWORD.toCharArray());
 
@@ -118,10 +116,33 @@ public class CircularProgressBarActivity extends AppCompatActivity {
                     MsgParser msgParser = new MsgParser(new String(message.getPayload()));
                     pHValue.setText(format("%.1f", msgParser.getpH_value()));
                     capacitanceValue.setText(format("%.1f", msgParser.getCapacitance()));
+
+                    pHBar.setCalibrationWithAnimation(ProgressValueConverter.pHValueToProgress(sharedPref.getFloat("pHCalibratedVal", 7.0f)));
+                    capBar.setCalibrationWithAnimation(ProgressValueConverter.capValueToProgress(sharedPref.getFloat("capacitanceCalibratedVal", 400f)));
+
+
+//                    Log.d("msgParser.getpH_value()", Float.toString(msgParser.getpH_value()));
+//                    Log.d("msgParser.getCapacitance()", Float.toString(msgParser.getCapacitance()));
+//
+//                    Log.d("msgParser.getpH_value() progress", Float.toString(ProgressValueConverter.pHValueToProgress(msgParser.getpH_value())));
+//                    Log.d("msgParser.getCapacitance() progress", Float.toString(ProgressValueConverter.capValueToProgress(msgParser.getCapacitance())));
+//
+//                    Log.d("sharedPref pHCalibratedVal", Float.toString(sharedPref.getFloat("pHCalibratedVal", 7.0f)));
+//                    Log.d("sharedPref capacitanceCalibratedVal", Float.toString(sharedPref.getFloat("capacitanceCalibratedVal", 400f)));
+//
+//                    Log.d("sharedPref ProgressValueConverter", Float.toString(ProgressValueConverter.pHValueToProgress(sharedPref.getFloat("pHCalibratedVal", 7.0f))));
+//                    Log.d("sharedPref ProgressValueConverter", Float.toString(ProgressValueConverter.capValueToProgress(sharedPref.getFloat("capacitanceCalibratedVal", 400f))));
+
                     editor.putFloat("pHVal", msgParser.getpH_value());
                     editor.putFloat("capacitanceVal", msgParser.getCapacitance());
-                    pHBar.setProgressWithAnimation(40f);
-                    capBar.setProgressWithAnimation(50f);
+                    editor.apply();
+
+                    pHBar.setProgressWithAnimation(ProgressValueConverter.pHValueToProgress(msgParser.getpH_value()));
+                    capBar.setProgressWithAnimation(ProgressValueConverter.capValueToProgress(msgParser.getCapacitance()));
+
+
+//                    pHBar.setProgressWithAnimation(40f);
+//                    capBar.setProgressWithAnimation(50f);
                 }
             }
 
@@ -168,7 +189,8 @@ public class CircularProgressBarActivity extends AppCompatActivity {
         Log.d("Calibration", "pH: " + pHBar.getProgress());
         capBar.setCalibrationWithAnimation(capBar.getProgress());
         pHBar.setCalibrationWithAnimation(pHBar.getProgress());
-        editor.putFloat("pHVal", ProgressValueConverter.pHProgressToValue(pHBar.getProgress()));
-        editor.putFloat("capacitanceVal", ProgressValueConverter.capProgressToValue(capBar.getProgress()));
+        editor.putFloat("pHCalibratedVal", ProgressValueConverter.pHProgressToValue(pHBar.getProgress()));
+        editor.putFloat("capacitanceCalibratedVal", ProgressValueConverter.capProgressToValue(capBar.getProgress()));
+        editor.apply();
     }
 }

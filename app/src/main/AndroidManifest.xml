@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.chiilek.milkwatch">
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 
     <application
@@ -12,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data android:name="android.max_aspect" android:value="2.1" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".activity_classes.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,17 +24,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InformationDisplay"
+            android:name=".activity_classes.InformationDisplay"
             android:resizeableActivity="true"
             />
+        <activity android:name=".activity_classes.CircularProgressBarActivity" >
 
-        <receiver
-            android:name=".AlarmReceiver"
-            android:enabled="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
+        </activity>
+        <service android:name=".job_scheduler.NotificationJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true" />
+        <service android:name=".notification.BackgroundService"
+            android:exported="false" />
+        <service android:name="org.eclipse.paho.android.service.MqttService" >
+        </service>
+
     </application>
 
 </manifest>

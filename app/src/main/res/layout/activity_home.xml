@@ -7,7 +7,7 @@
     android:background="@drawable/background_without_cow"
     android:gravity="center|center_vertical"
     android:orientation="vertical"
-    tools:context="com.example.chiilek.milkwatch.HomeActivity"
+    tools:context="com.example.chiilek.milkwatch.activity_classes.HomeActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView

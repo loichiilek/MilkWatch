@@ -1,6 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.example.chiilek.milkwatch.CircularProgressBar
+        android:layout_centerHorizontal="true"
+        android:id="@+id/custom_progressBar_pH"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        app:progress="0"
+        app:calibratedVal="0"
+        app:progressBarThickness="4dp"/>
+
+    <com.example.chiilek.milkwatch.CircularProgressBar
+        android:layout_centerHorizontal="true"
+        android:id="@+id/custom_progressBar_capacitance"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/custom_progressBar_pH"
+        android:layout_margin="20dp"
+        app:progress="0"
+        app:calibratedVal="0"
+        app:progressBarThickness="4dp"/>
+
+    <TextView
+        android:id="@+id/subText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/custom_progressBar_capacitance"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/connect"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subText"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="40dp"
+        android:text="Connect"
+        android:onClick="conn"/>
+
+    <Button
+        android:id="@+id/calibrate"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="Calibrate"
+        android:onClick="calibrate"/>
+
+    <TextView
+        android:id="@+id/display2_pH"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/custom_progressBar_pH"
+        android:layout_marginTop="60dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="pH" />
+
+    <TextView
+        android:id="@+id/display2_pHValue"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/display2_pH"
+        android:layout_marginTop="45dp"
+        android:textSize="18sp"
+        android:text="6.7" />
+
+    <TextView
+        android:id="@+id/display2_capacitance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/custom_progressBar_capacitance"
+        android:layout_marginTop="60dp"
+        android:text="capacitance"
+        android:textStyle="bold"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/display2_capacitanceValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/display2_capacitance"
+        android:layout_marginTop="45dp"
+        android:text="412uF"
+        android:textSize="18sp" />
+
 
 </RelativeLayout>
